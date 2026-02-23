@@ -3,13 +3,12 @@ import { Canvas } from '@react-three/fiber';
 function App() {
   return (
     <div id="canvas-container">
-      <Canvas>
+      <Canvas fallback={<div>WebGL 지원 환경이 아닙니다!</div>}>
         <mesh>
           <ambientLight intensity={0.1} />
-          <directionalLight color="red" position={[0, 0, 5]} intensity={0.8} />
 
-          <boxGeometry args={[2, 2, 2]} />
-          <meshStandardMaterial />
+          <boxGeometry args={[5, 5, 5]} />
+          <meshStandardMaterial color="hotpink" />
         </mesh>
       </Canvas>
     </div>
