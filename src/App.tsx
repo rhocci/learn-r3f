@@ -6,8 +6,15 @@ import { Grid } from '@react-three/drei';
 export default function App() {
   return (
     <div className={s.canvasContainer}>
-      <Canvas>
-        <Grid />
+      <Canvas shadows="soft">
+        <Grid
+          infiniteGrid
+          fadeDistance={25}
+          sectionColor={'#777'}
+          cellSize={1}
+          sectionSize={5}
+        />
+
         <Experience />
       </Canvas>
     </div>

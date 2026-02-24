@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export type ObjectProps = {
   color: string;
   scale: number;
@@ -5,9 +7,16 @@ export type ObjectProps = {
 };
 
 export const InteractiveObject = ({ color, scale, metalness }: ObjectProps) => {
+  const [hovered, setHovered] = useState<boolean>(false);
+
   return (
     <>
-      <mesh scale={scale} position={[0, scale / 2, 0]}>
+      <mesh
+        scale={hovered ? scale * 1.1 : scale}
+        position={[0, scale / 2, 0]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+      >
         <boxGeometry />
         <meshStandardMaterial color={color} metalness={metalness} />
       </mesh>
