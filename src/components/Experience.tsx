@@ -1,9 +1,9 @@
 import { Grid, OrbitControls } from '@react-three/drei';
 import { useControls } from 'leva';
+import { InteractiveObject } from './InteractiveObject';
 
 export const Experience: React.FC = () => {
-  const { grid, color, scale } = useControls({
-    grid: true,
+  const option = useControls({
     color: '#888',
     scale: {
       value: 1,
@@ -11,16 +11,19 @@ export const Experience: React.FC = () => {
       max: 3,
       step: 0.1,
     },
+    metalness: {
+      value: 0,
+      min: 0,
+      max: 1,
+      step: 0.1,
+    },
   });
 
   return (
     <>
       <OrbitControls minDistance={1} maxDistance={10} />
-      <ambientLight intensity={0.8} />
-      <directionalLight />
 
       <Grid
-        visible={grid}
         infiniteGrid
         fadeDistance={30}
         sectionColor={'#777'}
@@ -28,10 +31,11 @@ export const Experience: React.FC = () => {
         sectionSize={5}
       />
 
-      <mesh scale={scale}>
-        <boxGeometry />
-        <meshStandardMaterial color={color} />
-      </mesh>
+      <InteractiveObject
+        color={option.color}
+        scale={option.scale}
+        metalness={option.metalness}
+      />
     </>
   );
 };
