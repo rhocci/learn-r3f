@@ -6,7 +6,9 @@ import { Grid } from '@react-three/drei';
 export default function App() {
   return (
     <div className={s.canvasContainer}>
-      <Canvas shadows="soft">
+      <Canvas shadows camera={{ position: [5, 5, 5] }}>
+        <Experience />
+
         <Grid
           infiniteGrid
           fadeDistance={25}
@@ -15,7 +17,14 @@ export default function App() {
           sectionSize={5}
         />
 
-        <Experience />
+        <mesh
+          receiveShadow
+          position={[0, -0.01, 0]}
+          rotation={[-Math.PI / 2, 0, 0]}
+        >
+          <planeGeometry args={[50, 50]} />
+          <shadowMaterial transparent opacity={0.3} color="black" />
+        </mesh>
       </Canvas>
     </div>
   );

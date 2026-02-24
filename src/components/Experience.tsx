@@ -23,9 +23,9 @@ export const Experience: React.FC = () => {
     <>
       <OrbitControls minDistance={1} maxDistance={10} />
 
-      <ambientLight intensity={0.4} />
-      <directionalLight intensity={1.5} position={[5, 10, 5]} castShadow />
-      <pointLight position={[-5, -5, -5]} intensity={0.7} color="blue" />
+      <ambientLight intensity={0.3} />
+      <directionalLight castShadow position={[5, 10, 5]} intensity={1.5} />
+      <pointLight castShadow position={[2, 3, 2]} intensity={10} />
 
       <InteractiveObject {...values} />
     </>
